@@ -25,7 +25,7 @@ echo '>>>> V3.4 <<<<<'
 # prompts/args
 DEFAULT_HOSTNAME='photos-2'
 DEFAULT_PASSWORD='photosadmin'
-DEFAULT_IPV4_CIDR='192.168.0.25/24'
+DEFAULT_IPV4_CIDR='192.168.0.29/24'
 DEFAULT_IPV4_GW='192.168.0.1'
 DEFAULT_CONTAINER_ID=$(pvesh get /cluster/nextid)
 read -p "Enter a hostname (${DEFAULT_HOSTNAME}) : " HOSTNAME
