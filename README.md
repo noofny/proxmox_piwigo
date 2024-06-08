@@ -27,3 +27,7 @@ mp0: /mnt/nobackup,mp=/mnt/nobackup,backup=0
 mp1: /mnt/photos,mp=/mnt/photos,backup=0
 mp2: /mnt/images,mp=/mnt/images,backup=0
 ```
+
+## Links
+
+- [linuxserver/piwigo](https://github.com/linuxserver/docker-piwigo)

@@ -20,8 +20,6 @@ mkdir /mnt/photos
 mkdir /mnt/images
 mkdir -p /home/photosadmin/uploads
 mv /docker-compose.yaml /home/photosadmin/docker-compose.yaml
-mv /hardware_accelleration.yaml /home/photosadmin/hardware_accelleration.yaml
-# chmod 777 -R /data
 
 
 echo "Creating stack..."
@@ -31,4 +29,4 @@ echo "Starting stack..."
 docker-compose up --detach
 
 
-echo "Setup Piwigo complete - you can access the dashboard at http://$(hostname -I):2283"
+echo "Setup Piwigo complete - you can access the dashboard at http://$(hostname -I)"

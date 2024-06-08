@@ -43,7 +43,6 @@ ufw allow http
 ufw allow https
 ufw allow 22/tcp
 ufw allow 80/tcp
-ufw allow 2283/tcp
 ufw status
 
 
