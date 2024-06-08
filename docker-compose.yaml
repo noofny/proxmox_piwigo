@@ -12,13 +12,13 @@ services:
     volumes:
       - /home/photosadmin/piwigo/config:/config
       - /home/photosadmin/piwigo/gallery:/gallery
-#     - /mnt/nobackup:/mnt/nobackup
-#     - /mnt/images:/mnt/images
-#     - /mnt/photos:/mnt/photos
     ports:
       - 80:80
     restart: unless-stopped
 
+#     - /mnt/nobackup:/mnt/nobackup
+#     - /mnt/images:/mnt/images
+#     - /mnt/photos:/mnt/photos
 
 # services:
 #   piwigo:
