@@ -1,34 +1,36 @@
 ---
+version: '3'
+
 services:
   piwigo:
     image: lscr.io/linuxserver/piwigo:latest
     container_name: piwigo
     environment:
+      - TZ='Australia/Sydney'
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
     volumes:
       - /home/photosadmin/piwigo/config:/config
       - /home/photosadmin/piwigo/gallery:/gallery
+#     - /mnt/nobackup:/mnt/nobackup
+#     - /mnt/images:/mnt/images
+#     - /mnt/photos:/mnt/photos
     ports:
       - 80:80
     restart: unless-stopped
 
-# ---
+
 # services:
 #   piwigo:
 #     image: lscr.io/linuxserver/piwigo:latest
 #     container_name: piwigo
 #     environment:
-#       - TZ='Australia/Sydney'
 #       - PUID=1000
 #       - PGID=1000
+#       - TZ=Etc/UTC
 #     volumes:
 #       - /home/photosadmin/piwigo/config:/config
 #       - /home/photosadmin/piwigo/gallery:/gallery
-# #     - /mnt/nobackup:/mnt/nobackup
-# #     - /mnt/images:/mnt/images
-# #     - /mnt/photos:/mnt/photos
 #     ports:
 #       - 80:80
 #     restart: unless-stopped
