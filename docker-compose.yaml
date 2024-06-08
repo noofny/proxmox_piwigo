@@ -1,36 +1,52 @@
 ---
 version: '3'
 
+x-common-environment: &common_environment
+  TZ: 'Australia/Sydney'
+  PUID: 1000
+  PGID: 1000
+  DB_DATABASE_NAME: immich
+  DB_USERNAME: maria
+  DB_PASSWORD: CHANGE_ME
+
 services:
   piwigo:
     image: lscr.io/linuxserver/piwigo:latest
     container_name: piwigo
     environment:
-      - TZ='Australia/Sydney'
-      - PUID=1000
-      - PGID=1000
+      <<: *common_environment
+      # - TZ='Australia/Sydney'
+      # - PUID=1000
+      # - PGID=1000
     volumes:
       - /home/photosadmin/piwigo/config:/config
       - /home/photosadmin/piwigo/gallery:/gallery
+#     - /mnt/nobackup:/mnt/nobackup
+#     - /mnt/images:/mnt/images
+#     - /mnt/photos:/mnt/photos
     ports:
       - 80:80
     restart: unless-stopped
 
-#     - /mnt/nobackup:/mnt/nobackup
-#     - /mnt/images:/mnt/images
-#     - /mnt/photos:/mnt/photos
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: mariadb
+    environment:
+      <<: *common_environment
+      # - PUID=1000
+      # - PGID=1000
+      # - TZ=Etc/UTC
+      MYSQL_ROOT_PASSWORD: CHANGE_ME
+      MYSQL_DATABASE: piwigo
+      MYSQL_USER: piwigo
+      MYSQL_PASSWORD: CHANGE_ME
+      # - MYSQL_DATABASE=USER_DB_NAME #optional
+      # - MYSQL_USER=MYSQL_USER #optional
+      # - MYSQL_PASSWORD=DATABASE_PASSWORD #optional
+      # - REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql #optional
+    volumes:
+      - /home/photosadmin/mariadb/config:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
 
-# services:
-#   piwigo:
-#     image: lscr.io/linuxserver/piwigo:latest
-#     container_name: piwigo
-#     environment:
-#       - PUID=1000
-#       - PGID=1000
-#       - TZ=Etc/UTC
-#     volumes:
-#       - /home/photosadmin/piwigo/config:/config
-#       - /home/photosadmin/piwigo/gallery:/gallery
-#     ports:
-#       - 80:80
-#     restart: unless-stopped
